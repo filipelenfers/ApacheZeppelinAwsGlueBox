@@ -19,6 +19,6 @@ echo "Done."
 
 #Add start&stop scripts to path
 echo "Creating startZeppelon && stopZeppelin..."
-ln -s /vagrant/scripts/startZeppelin.sh /usr/local/bin/startZeppelin
-ln -s /vagrant/scripts/stopZeppelin.sh /usr/local/bin/stopZeppelin
+cp /vagrant/scripts/startZeppelin.sh /usr/local/bin/startZeppelin
+cp /vagrant/scripts/stopZeppelin.sh /usr/local/bin/stopZeppelin
 echo "Done."
