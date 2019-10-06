@@ -9,7 +9,7 @@ VAGRANT_CLOUD_TOKEN=$4 #your token generated at app.vagrantup.com user settings
 
 echo "Genereting box..."
 #generate build
-vagrant package --output zeppelinGlue_v1_0_1.box --vagrantfile Vagrantfile --include ./scripts/startZeppelin.sh,./scripts/stopZeppelin.sh
+vagrant package --output build/zeppelinGlue.box --vagrantfile Vagrantfile --include ./scripts/startZeppelin.sh,./scripts/stopZeppelin.sh
 echo "Done."
 
 echo "Genereting new version..."
