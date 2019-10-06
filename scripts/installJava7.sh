@@ -5,7 +5,7 @@ cd /vagrant
 #create jdk directory 
 mkdir /opt/jdk
 #uncompress, change to your file name 
-tar -zxf jdk-7u80-linux-x64.tar.gz -C /opt/jdk
+tar -zxf deps/jdk-7u80-linux-x64.tar.gz -C /opt/jdk
 #check if files are there 
 ls /opt/jdk
 #update alternatives so the command java point to the new jdk 
