@@ -7,9 +7,10 @@ BOX_NAME=$2 #your box at app.vagrantup.com
 VERSION=$3 #version you want to publish
 VAGRANT_CLOUD_TOKEN=$4 #your token generated at app.vagrantup.com user settings
 
-echo "Genereting package..."
+echo "Genereting box..."
 #generate build
-packer build -force ./builder.json
+vagrant package --output zeppelinGlue_v1_0_1.box --vagrantfile Vagrantfile --include ./scripts/startZeppelin.sh,./scripts/stopZeppelin.sh
+echo "Done."
 
 echo "Genereting new version..."
 #create new version
