@@ -9,7 +9,8 @@ VAGRANT_CLOUD_TOKEN=$4 #your token generated at app.vagrantup.com user settings
 
 echo "Genereting box..."
 #generate build
-vagrant package --output build/zeppelinGlue.box --vagrantfile templates/Vagrantfile_Template_Box --include ./scripts/startZeppelin.sh,./scripts/stopZeppelin.sh
+rm -R ./build
+vagrant package --output build/zeppelinGlue.box --vagrantfile templates/Vagrantfile_Template_Box
 echo "Done."
 
 echo "Genereting new version..."
@@ -18,14 +19,14 @@ curl \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer $VAGRANT_CLOUD_TOKEN" \
   https://app.vagrantup.com/api/v1/box/$USER/$BOX_NAME/versions \
-  --data '{ "version": { "version": "$VERSION" } }'
+  --data "{ \"version\": { \"version\": \"$VERSION\" } }"
 
 echo "Genereting provider..."
 # Create a new provider
 curl \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer $VAGRANT_CLOUD_TOKEN" \
-  https://app.vagrantup.com/api/v1/box/myuser/$USER/$BOX_NAME/$VERSION/providers \
+  https://app.vagrantup.com/api/v1/box/$USER/$BOX_NAME/version/$VERSION/providers \
   --data '{ "provider": { "name": "virtualbox" } }'
 
 echo "Uploaging file..."
@@ -35,10 +36,10 @@ response=$(curl \
   https://app.vagrantup.com/api/v1/box/$USER/$BOX_NAME/version/$VERSION/provider/virtualbox/upload)
 
 # Extract the upload URL from the response (requires the jq command)
-upload_path=$(echo "$response" | jq .upload_path)
+upload_path=$(echo $response | jq -r .upload_path)
 
 # Perform the upload
-curl $upload_path --request PUT --upload-file build/zeppelinGlue/package.box
+curl $upload_path --request PUT --upload-file build/zeppelinGlue.box
 
 echo "Releasing version..."
 # Release the version
