@@ -15,5 +15,7 @@ Vagrant.configure("2") do |config|
  
   config.vm.provision "shell", name: "java7", path: "scripts/installJava7.sh"
   config.vm.provision "shell", name: "zeppelin", path: "scripts/installZeppelin.sh"
+  #config.vm.provision "shell", name: "cleanup", path: "scripts/cleanup.sh"
+  #config.vm.provision "shell", name: "shrink", path: "scripts/shrink.sh"
   
 end
