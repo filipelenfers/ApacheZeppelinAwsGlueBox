@@ -16,6 +16,6 @@ A vagrant file with Java and Zeppelin installed though provision, in the correct
 1. Start Zeppelin: `startZeppelin`
 1. Continue this tutorial: [https://docs.aws.amazon.com/glue/latest/dg/dev-endpoint-tutorial-local-notebook.html
 ](https://docs.aws.amazon.com/glue/latest/dg/dev-endpoint-tutorial-local-notebook.html) on the ***"Initiating SSH Port Forwarding to Connect to Your DevEndpoint"*** session. All the instalation and configturation of Apache Zeppelin is already done inside the VM. 
-1. you can access Zeppelin on you host opening a browser and accessing the address `http:\\localhost:8080`.
+1. you can access Zeppelin on you host opening a browser and accessing the address `http://localhost:8080`.
 
 
